@@ -1,0 +1,160 @@
+
+:root{
+  --bg: #0b0b0b;
+  --gold: #E6B646;
+  --gold-strong: #F2C75B;
+  --text: #EDEDED;
+  --muted: #9A9A9A;
+}
+
+*{ box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin:0;
+  background: radial-gradient(1200px 600px at 70% 30%, rgba(230,182,70,0.10), transparent 60%), var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container{
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding: 8px 0 16px;
+}
+
+.brand{
+  font-weight:700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: 14px;
+  opacity:.9;
+}
+
+.actions{
+  display:flex;
+  gap:12px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.16); }
+
+.btn .icon{
+  width:18px; height:18px; display:inline-block;
+}
+
+.hero{
+  margin-top: 12px;
+}
+
+.carousel{
+  position:relative;
+  overflow:hidden;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.5);
+}
+
+.slides{
+  display:flex;
+  transition: transform .5s cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+
+.slide{
+  position:relative;
+  min-width:100%;
+  aspect-ratio: 16 / 9;
+  background:#111;
+}
+.slide a { display:block; width:100%; height:100%; }
+.slide img { width:100%; height:100%; object-fit: cover; display:block; }
+
+.controls{
+  position:absolute;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  pointer-events:none;
+  padding: 0 8px;
+}
+
+.ctrl{
+  pointer-events: all;
+  border: none;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(4px);
+  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease;
+}
+.ctrl:hover{ background: rgba(0,0,0,.55); }
+.ctrl:active{ transform: scale(.98); }
+
+.dots{
+  position:absolute;
+  bottom: 10px;
+  width: 100%;
+  display:flex;
+  justify-content:center;
+  gap: 8px;
+}
+.dot{
+  width: 8px; height: 8px; border-radius: 999px;
+  background: rgba(255,255,255,.35);
+  border: none; padding:0; cursor:pointer;
+  transition: transform .15s ease, background .2s ease;
+}
+.dot[aria-current="true"]{
+  background: var(--gold);
+  transform: scale(1.25);
+}
+
+.footer{
+  margin: 22px 0 8px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+  gap: 16px;
+  flex-wrap: wrap;
+  opacity: .9;
+}
+
+.footer a{ color: var(--gold-strong); text-decoration:none; }
+.footer a:hover{ text-decoration: underline; }
+
+
+/* Make headings/text scale a bit closer ao Figma look */
+.brand{ font-size: 15px; letter-spacing: .12em; }
+.hero{ margin-top: 8px; }
+.slide{ aspect-ratio: 16 / 9; }
+@media (max-width: 768px){
+  .btn{ padding: 9px 12px; font-size: 13px; }
+  .ctrl{ width: 38px; height: 38px; }
+}
